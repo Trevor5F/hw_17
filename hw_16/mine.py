@@ -21,6 +21,7 @@ class User(db.Model):
     role = db.Column(db.String(50))
     phone = db.Column(db.String(50))
 
+
 class Order(db.Model):
     __tablename__ = 'orders'
     id = db.Column(db.Integer, primary_key=True)
@@ -65,7 +66,6 @@ def insert_data():
         with db.session.begin():
             db.session.add_all(user_list)
 
-
     order_list = []
     for order in orders:
         order_list.append(
@@ -83,7 +83,6 @@ def insert_data():
         )
         with db.session.begin():
             db.session.add_all(order_list)
-
 
     offer_list = []
     for offer in offers:
@@ -175,6 +174,7 @@ def orders_by_oid(oid):
 
 #___________________________________________________________________
 
+
 @app.route('/', methods=['GET', 'POST'])
 def user_index():
     if request.method == 'GET':
@@ -203,7 +203,6 @@ def user_index():
             )
         db.session.add(new_users)
         db.session.commit()
-
 
 
 @app.route('/<int:oid>', methods=['GET', 'PUT', 'DELETE'])
