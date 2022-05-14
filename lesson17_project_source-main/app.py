@@ -80,6 +80,10 @@ class BooksView(Resource):
                 return f"Не найдено", 204
             else:
                 return movies_schema.dump(movies_found), 200
+        else:
+            all_movies = db.session.query(Movie).all()
+            return movie_schema.dump(all_movies), 200
+
 
 
 if __name__ == '__main__':
