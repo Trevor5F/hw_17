@@ -59,7 +59,7 @@ class BooksView(Resource):
     def get(self):
         director_id = request.args.get('director_id')
         genre_id = request.args.get('genre_id')
-        if director_id:
+        if director_id and genre_id:
             movies_found = Movie.query.filter(Movie.director_id == int(director_id),
                                               Movie.genre_id == int(genre_id)).all()
             if not movies_found:
