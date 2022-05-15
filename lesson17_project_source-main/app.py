@@ -81,8 +81,8 @@ class BooksView(Resource):
             else:
                 return movies_schema.dump(movies_found), 200
         else:
-            all_movies = db.session.query(Movie).all()
-            return movie_schema.dump(all_movies), 200
+            all_movies = Movie.query.all()
+            return movies_schema.dump(all_movies), 200
 
 
 
